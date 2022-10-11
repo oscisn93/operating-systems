@@ -1,0 +1,319 @@
+The system is: Linux - 5.19.14-200.fc36.x86_64 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /bin/clang 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is Clang, found in "/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /bin/clang++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is Clang, found in "/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdCXX/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/joaquinloera/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/ninja/linux/ninja cmTC_da413 && [1/2] Building C object CMakeFiles/cmTC_da413.dir/CMakeCCompilerABI.c.o
+clang version 14.0.5 (Fedora 14.0.5-1.fc36)
+Target: x86_64-redhat-linux-gnu
+Thread model: posix
+InstalledDir: /bin
+Found candidate GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12
+Selected GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12
+Candidate multilib: .;@m64
+Candidate multilib: 32;@m32
+Selected multilib: .;@m64
+ (in-process)
+ "/usr/bin/clang-14" -cc1 -triple x86_64-redhat-linux-gnu -emit-obj -mrelax-all --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model static -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp -resource-dir /usr/lib64/clang/14.0.5 -dependency-file CMakeFiles/cmTC_da413.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_da413.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib64/clang/14.0.5/include -internal-isystem /usr/local/include -internal-isystem /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../x86_64-redhat-linux/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdebug-compilation-dir=/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp -ferror-limit 19 -fgnuc-version=4.2.1 -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_da413.dir/CMakeCCompilerABI.c.o -x c /home/joaquinloera/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCCompilerABI.c
+clang -cc1 version 14.0.5 based upon LLVM 14.0.5 default target x86_64-redhat-linux-gnu
+ignoring nonexistent directory "/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../x86_64-redhat-linux/include"
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib64/clang/14.0.5/include
+ /usr/local/include
+ /usr/include
+End of search list.
+[2/2] Linking C executable cmTC_da413
+clang version 14.0.5 (Fedora 14.0.5-1.fc36)
+Target: x86_64-redhat-linux-gnu
+Thread model: posix
+InstalledDir: /bin
+Found candidate GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12
+Selected GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12
+Candidate multilib: .;@m64
+Candidate multilib: 32;@m32
+Selected multilib: .;@m64
+ "/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_da413 /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /bin/../lib/gcc/x86_64-redhat-linux/12/crtbegin.o -L/bin/../lib/gcc/x86_64-redhat-linux/12 -L/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/lib -L/usr/lib CMakeFiles/cmTC_da413.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /bin/../lib/gcc/x86_64-redhat-linux/12/crtend.o /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib64/clang/14.0.5/include]
+    add: [/usr/local/include]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/lib64/clang/14.0.5/include] ==> [/usr/lib64/clang/14.0.5/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/lib64/clang/14.0.5/include;/usr/local/include;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/home/joaquinloera/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/ninja/linux/ninja cmTC_da413 && [1/2] Building C object CMakeFiles/cmTC_da413.dir/CMakeCCompilerABI.c.o]
+  ignore line: [clang version 14.0.5 (Fedora 14.0.5-1.fc36)]
+  ignore line: [Target: x86_64-redhat-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /bin]
+  ignore line: [Found candidate GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12]
+  ignore line: [Selected GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Candidate multilib: 32]
+  ignore line: [@m32]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [ (in-process)]
+  ignore line: [ "/usr/bin/clang-14" -cc1 -triple x86_64-redhat-linux-gnu -emit-obj -mrelax-all --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model static -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp -resource-dir /usr/lib64/clang/14.0.5 -dependency-file CMakeFiles/cmTC_da413.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_da413.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib64/clang/14.0.5/include -internal-isystem /usr/local/include -internal-isystem /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../x86_64-redhat-linux/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdebug-compilation-dir=/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp -ferror-limit 19 -fgnuc-version=4.2.1 -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_da413.dir/CMakeCCompilerABI.c.o -x c /home/joaquinloera/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 14.0.5 based upon LLVM 14.0.5 default target x86_64-redhat-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../x86_64-redhat-linux/include"]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib64/clang/14.0.5/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [[2/2] Linking C executable cmTC_da413]
+  ignore line: [clang version 14.0.5 (Fedora 14.0.5-1.fc36)]
+  ignore line: [Target: x86_64-redhat-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /bin]
+  ignore line: [Found candidate GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12]
+  ignore line: [Selected GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Candidate multilib: 32]
+  ignore line: [@m32]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  link line: [ "/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_da413 /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /bin/../lib/gcc/x86_64-redhat-linux/12/crtbegin.o -L/bin/../lib/gcc/x86_64-redhat-linux/12 -L/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/lib -L/usr/lib CMakeFiles/cmTC_da413.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /bin/../lib/gcc/x86_64-redhat-linux/12/crtend.o /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o]
+    arg [/bin/ld] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_da413] ==> ignore
+    arg [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o] ==> obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o]
+    arg [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o] ==> obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o]
+    arg [/bin/../lib/gcc/x86_64-redhat-linux/12/crtbegin.o] ==> obj [/bin/../lib/gcc/x86_64-redhat-linux/12/crtbegin.o]
+    arg [-L/bin/../lib/gcc/x86_64-redhat-linux/12] ==> dir [/bin/../lib/gcc/x86_64-redhat-linux/12]
+    arg [-L/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64] ==> dir [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [CMakeFiles/cmTC_da413.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/bin/../lib/gcc/x86_64-redhat-linux/12/crtend.o] ==> obj [/bin/../lib/gcc/x86_64-redhat-linux/12/crtend.o]
+    arg [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o] ==> obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o]
+  collapse obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o] ==> [/lib64/crt1.o]
+  collapse obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o] ==> [/lib64/crti.o]
+  collapse obj [/bin/../lib/gcc/x86_64-redhat-linux/12/crtbegin.o] ==> [/lib/gcc/x86_64-redhat-linux/12/crtbegin.o]
+  collapse obj [/bin/../lib/gcc/x86_64-redhat-linux/12/crtend.o] ==> [/lib/gcc/x86_64-redhat-linux/12/crtend.o]
+  collapse obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o] ==> [/lib64/crtn.o]
+  collapse library dir [/bin/../lib/gcc/x86_64-redhat-linux/12] ==> [/lib/gcc/x86_64-redhat-linux/12]
+  collapse library dir [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64] ==> [/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit objs: [/lib64/crt1.o;/lib64/crti.o;/lib/gcc/x86_64-redhat-linux/12/crtbegin.o;/lib/gcc/x86_64-redhat-linux/12/crtend.o;/lib64/crtn.o]
+  implicit dirs: [/lib/gcc/x86_64-redhat-linux/12;/lib64;/usr/lib64;/lib;/usr/lib]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/joaquinloera/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/ninja/linux/ninja cmTC_edadf && [1/2] Building CXX object CMakeFiles/cmTC_edadf.dir/CMakeCXXCompilerABI.cpp.o
+clang version 14.0.5 (Fedora 14.0.5-1.fc36)
+Target: x86_64-redhat-linux-gnu
+Thread model: posix
+InstalledDir: /bin
+Found candidate GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12
+Selected GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12
+Candidate multilib: .;@m64
+Candidate multilib: 32;@m32
+Selected multilib: .;@m64
+ (in-process)
+ "/usr/bin/clang-14" -cc1 -triple x86_64-redhat-linux-gnu -emit-obj -mrelax-all --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model static -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp -resource-dir /usr/lib64/clang/14.0.5 -dependency-file CMakeFiles/cmTC_edadf.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_edadf.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12 -internal-isystem /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux -internal-isystem /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/backward -internal-isystem /usr/lib64/clang/14.0.5/include -internal-isystem /usr/local/include -internal-isystem /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../x86_64-redhat-linux/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -fdebug-compilation-dir=/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp -ferror-limit 19 -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_edadf.dir/CMakeCXXCompilerABI.cpp.o -x c++ /home/joaquinloera/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 14.0.5 based upon LLVM 14.0.5 default target x86_64-redhat-linux-gnu
+ignoring nonexistent directory "/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../x86_64-redhat-linux/include"
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12
+ /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux
+ /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/backward
+ /usr/lib64/clang/14.0.5/include
+ /usr/local/include
+ /usr/include
+End of search list.
+[2/2] Linking CXX executable cmTC_edadf
+clang version 14.0.5 (Fedora 14.0.5-1.fc36)
+Target: x86_64-redhat-linux-gnu
+Thread model: posix
+InstalledDir: /bin
+Found candidate GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12
+Selected GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12
+Candidate multilib: .;@m64
+Candidate multilib: 32;@m32
+Selected multilib: .;@m64
+ "/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_edadf /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /bin/../lib/gcc/x86_64-redhat-linux/12/crtbegin.o -L/bin/../lib/gcc/x86_64-redhat-linux/12 -L/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/lib -L/usr/lib CMakeFiles/cmTC_edadf.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /bin/../lib/gcc/x86_64-redhat-linux/12/crtend.o /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12]
+    add: [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux]
+    add: [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/backward]
+    add: [/usr/lib64/clang/14.0.5/include]
+    add: [/usr/local/include]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12] ==> [/include/c++/12]
+  collapse include dir [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux] ==> [/include/c++/12/x86_64-redhat-linux]
+  collapse include dir [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/backward] ==> [/include/c++/12/backward]
+  collapse include dir [/usr/lib64/clang/14.0.5/include] ==> [/usr/lib64/clang/14.0.5/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/include/c++/12;/include/c++/12/x86_64-redhat-linux;/include/c++/12/backward;/usr/lib64/clang/14.0.5/include;/usr/local/include;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/home/joaquinloera/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/ninja/linux/ninja cmTC_edadf && [1/2] Building CXX object CMakeFiles/cmTC_edadf.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [clang version 14.0.5 (Fedora 14.0.5-1.fc36)]
+  ignore line: [Target: x86_64-redhat-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /bin]
+  ignore line: [Found candidate GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12]
+  ignore line: [Selected GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Candidate multilib: 32]
+  ignore line: [@m32]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [ (in-process)]
+  ignore line: [ "/usr/bin/clang-14" -cc1 -triple x86_64-redhat-linux-gnu -emit-obj -mrelax-all --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model static -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp -resource-dir /usr/lib64/clang/14.0.5 -dependency-file CMakeFiles/cmTC_edadf.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_edadf.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12 -internal-isystem /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux -internal-isystem /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/backward -internal-isystem /usr/lib64/clang/14.0.5/include -internal-isystem /usr/local/include -internal-isystem /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../x86_64-redhat-linux/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -fdebug-compilation-dir=/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/CMakeTmp -ferror-limit 19 -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_edadf.dir/CMakeCXXCompilerABI.cpp.o -x c++ /home/joaquinloera/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang -cc1 version 14.0.5 based upon LLVM 14.0.5 default target x86_64-redhat-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../x86_64-redhat-linux/include"]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12]
+  ignore line: [ /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux]
+  ignore line: [ /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/backward]
+  ignore line: [ /usr/lib64/clang/14.0.5/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [[2/2] Linking CXX executable cmTC_edadf]
+  ignore line: [clang version 14.0.5 (Fedora 14.0.5-1.fc36)]
+  ignore line: [Target: x86_64-redhat-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /bin]
+  ignore line: [Found candidate GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12]
+  ignore line: [Selected GCC installation: /bin/../lib/gcc/x86_64-redhat-linux/12]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Candidate multilib: 32]
+  ignore line: [@m32]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  link line: [ "/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_edadf /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /bin/../lib/gcc/x86_64-redhat-linux/12/crtbegin.o -L/bin/../lib/gcc/x86_64-redhat-linux/12 -L/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/lib -L/usr/lib CMakeFiles/cmTC_edadf.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /bin/../lib/gcc/x86_64-redhat-linux/12/crtend.o /bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o]
+    arg [/bin/ld] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_edadf] ==> ignore
+    arg [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o] ==> obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o]
+    arg [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o] ==> obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o]
+    arg [/bin/../lib/gcc/x86_64-redhat-linux/12/crtbegin.o] ==> obj [/bin/../lib/gcc/x86_64-redhat-linux/12/crtbegin.o]
+    arg [-L/bin/../lib/gcc/x86_64-redhat-linux/12] ==> dir [/bin/../lib/gcc/x86_64-redhat-linux/12]
+    arg [-L/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64] ==> dir [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [CMakeFiles/cmTC_edadf.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/bin/../lib/gcc/x86_64-redhat-linux/12/crtend.o] ==> obj [/bin/../lib/gcc/x86_64-redhat-linux/12/crtend.o]
+    arg [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o] ==> obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o]
+  collapse obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o] ==> [/lib64/crt1.o]
+  collapse obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o] ==> [/lib64/crti.o]
+  collapse obj [/bin/../lib/gcc/x86_64-redhat-linux/12/crtbegin.o] ==> [/lib/gcc/x86_64-redhat-linux/12/crtbegin.o]
+  collapse obj [/bin/../lib/gcc/x86_64-redhat-linux/12/crtend.o] ==> [/lib/gcc/x86_64-redhat-linux/12/crtend.o]
+  collapse obj [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o] ==> [/lib64/crtn.o]
+  collapse library dir [/bin/../lib/gcc/x86_64-redhat-linux/12] ==> [/lib/gcc/x86_64-redhat-linux/12]
+  collapse library dir [/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../lib64] ==> [/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit objs: [/lib64/crt1.o;/lib64/crti.o;/lib/gcc/x86_64-redhat-linux/12/crtbegin.o;/lib/gcc/x86_64-redhat-linux/12/crtend.o;/lib64/crtn.o]
+  implicit dirs: [/lib/gcc/x86_64-redhat-linux/12;/lib64;/usr/lib64;/lib;/usr/lib]
+  implicit fwks: []
+
+
