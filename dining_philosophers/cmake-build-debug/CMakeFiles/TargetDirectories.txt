@@ -1,3 +1,0 @@
-/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/dining_philosophers.dir
-/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/joaquinloera/CLionProjects/operating-systems/dining_philosophers/cmake-build-debug/CMakeFiles/rebuild_cache.dir
