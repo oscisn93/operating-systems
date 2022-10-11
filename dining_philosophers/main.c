@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-int main(int argc, char *rgv[]) {
+int main(int argc, char *argv[]) {
 
 
 
