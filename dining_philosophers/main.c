@@ -1,18 +1,14 @@
 // Created by Oscar Cisneros on 10/10/22.
 //
+#include <pthread.h>
 #include <semaphore.h>
 #include <stdio.h>
-#include <pthread.h>
-#include <wait.h>
 #include <unistd.h>
+#include <wait.h>
 
 sem_t mutex;
 
-typedef enum cur_state {
-  THINK,
-  HUNGRY,
-  EAT
-} cur_state;
+typedef enum cur_state { THINK, HUNGRY, EAT } cur_state;
 sem_t chopstick[5];
 
 cur_state p_state[5];
@@ -21,7 +17,7 @@ void eat(int phil_num) {
   sem_wait(&mutex);
   p_state[phil_num] = HUNGRY;
   printf("Philosopher %d is hungry...\n", phil_num);
-  if (p_state[phil_num - 1] != EAT && p_state[phil_num +  1] != EAT) {
+  if (p_state[phil_num - 1] != EAT && p_state[phil_num + 1] != EAT) {
     p_state[phil_num] = EAT;
     sleep(1);
     sem_post(&chopstick[phil_num]);
@@ -35,15 +31,16 @@ void eat(int phil_num) {
 }
 
 void check_others(int phil_num) {
-  if (p_state[phil_num] == HUNGRY && p_state[phil_num - 1] != EAT && p_state[phil_num +  1] != EAT) {
+  if (p_state[phil_num] == HUNGRY && p_state[phil_num - 1] != EAT &&
+      p_state[phil_num + 1] != EAT) {
     p_state[phil_num] = EAT;
     sem_post(&chopstick[phil_num]);
     sem_post(&chopstick[(phil_num + 1) % 5]);
   }
 }
 
-void *philosopher(void* i) {
-  int* j = i;
+void *philosopher(void *i) {
+  int *j = i;
   int pos = *j;
   do {
     p_state[pos] = THINK;
@@ -52,12 +49,12 @@ void *philosopher(void* i) {
     eat(pos);
     p_state[pos] = EAT;
     sem_wait(&mutex);
-    check_others(pos -1);
+    check_others(pos - 1);
     check_others(pos + 1);
     sem_post(&mutex);
-  } while(1);
+  } while (1);
   return NULL;
- }
+}
 
 int main(int argc, char *argv[]) {
   sem_init(&mutex, 0, 1);
