@@ -15,12 +15,16 @@ void *runner1(void *x) {
   int *i = x;
   int pos = *i;
   while (1) {
+    cur_states[pos] = THINKING;
     printf("\nPhilosopher %d is thinking...\t");
     sem_wait(&mutex);
+    cur_states[pos] = HUNGRY;
     sem_wait(&chopsticks[pos]);
     sem_wait(&chopsticks[(pos + 1) % 5]);
+    cur_states[pos] = EATING;
     printf("\nPhilosopher %d is eating...\t", pos);
     sem_post(&chopsticks[(pos + 1) % 5]);
+    cur_states[pos] = THINKING;
     sem_post(&chopsticks[pos]);
     sem_post(&mutex);
   }
@@ -31,12 +35,16 @@ void *runner2(void *x) {
   int *i = x;
   int pos = *i;
   while (1) {
+    cur_states[pos] = THINKING;
     printf("\nPhilosopher %d is thinking...\t");
     sem_wait(&mutex);
+    cur_states[pos] = HUNGRY;
     sem_wait(&chopsticks[(pos + 1) % 5]);
     sem_wait(&chopsticks[pos]);
+    cur_states[pos] = EATING;
     printf("\nPhilosopher %d is eating...\t", pos);
     sem_post(&chopsticks[pos]);
+    cur_states[pos] = THINKING;
     sem_post(&chopsticks[(pos + 1) % 5]);
     sem_post(&mutex);
   }
