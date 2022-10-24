@@ -7,11 +7,19 @@
 #include <wait.h>
 
 sem_t mutex;
-
 typedef enum cur_state { THINK, HUNGRY, EAT } cur_state;
-sem_t chopstick[5];
 
+sem_t chopstick[5];
 cur_state p_state[5];
+
+int get_prev(int cur) {
+  int prev_idx;
+  if (cur == 0)
+    prev_idx = 4;
+  else
+    prev_idx = cur - 1;
+  return prev_idx;
+}
 
 void eat(int phil_num) {
   sem_wait(&mutex);
@@ -31,8 +39,10 @@ void eat(int phil_num) {
 }
 
 void check_others(int phil_num) {
-  if (p_state[phil_num] == HUNGRY && p_state[phil_num - 1] != EAT &&
-      p_state[phil_num + 1] != EAT) {
+  int prev_idx = get_prev(phil_num);
+  if (p_state[phil_num] == HUNGRY && p_state[prev_idx] != EAT &&
+      p_state[(phil_num + 1) % 5] != EAT) {
+    printf("Philosopher %d is eating...\n", phil_num);
     p_state[phil_num] = EAT;
     sem_post(&chopstick[phil_num]);
     sem_post(&chopstick[(phil_num + 1) % 5]);
