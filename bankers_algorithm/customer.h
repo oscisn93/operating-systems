@@ -10,6 +10,7 @@
 
 #include "bank.h"
 #include "utils.h"
+#include "vector_.h"
 
 class Bank;
 

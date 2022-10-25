@@ -4,10 +4,11 @@
 		{
 			"type": "cppbuild",
 			"label": "C/C++: clang++ build active file",
-			"command": "/usr/local/opt/llvm/bin/clang++",
+			"command": "clang++",
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
+				"-pthread",
 				"-std=c++17",
 				"${file}",
 				"-o",
@@ -23,7 +24,7 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"detail": "compiler: /usr/local/opt/llvm/bin/clang++"
+			"detail": "clang++"
 		}
 	]
 }
