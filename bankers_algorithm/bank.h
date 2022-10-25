@@ -26,7 +26,10 @@ public:
        // TODO --- correctly implement the Banker's algorithm for 
        //    is_safe() and req_approved()
  
-  bool is_safe(int id, const vector_<int>& req) { return true; }   
+  bool is_safe(int id, const vector_<int>& req) {
+    return true;
+  }
+
   bool req_approved(int id, const vector_<int>& req) { 
     Customer* c = customers[id];
     return !c->too_much(req); 
@@ -49,8 +52,9 @@ public:
   void show() const {
     std::stringstream ss;
     ss << "\n+-----------------------------------------\n"
-          "|   BANK   avail: [" << avail.as_string().c_str() << "]\n"
-          "+-----------------------------------------\n";
+          << "|   BANK   avail: [" 
+          << avail.as_string().c_str() << "]\n"
+          << "+-----------------------------------------\n";
     for (Customer* c : customers) {
       ss << "| P# " <<  std::setw(2) << c->get_idx() << "   "
          <<  (c->get_alloc().as_string().c_str()) << "   "
@@ -59,9 +63,11 @@ public:
          << "\n";
     }
     std::string s = ss.str();
-
-    Utils::print_locked("%s"
-                        "+----------------------------------------\n", (s.c_str()));
+    Utils::print_locked(
+      "%s"
+      "+----------------------------------------\n", 
+      (s.c_str())
+    );
   }
   
   friend std::ostream& operator<<(std::ostream& os, const Bank& bank) {

@@ -1,0 +1,4 @@
+{
+  "cmake.sourceDirectory": "${workspaceFolder}/.",
+  "editor.formatOnSave": true
+}
