@@ -12,7 +12,7 @@
 #include <iostream>
 #include <semaphore.h>
 #include <string.h>
-
+using namespace std;
 sem_t sem;
 
 void *runner(void *param) { // thread runner
@@ -146,34 +146,120 @@ void process_filestream(
   ifs.close();
 }
 
-int main(int argc, const char *argv[]) {
-  if (argc != 2) {
-    std::cerr << "Usage: ./bank_algo filename\n\n";
+int process_files(int argc, const char *argv[])
+{
+    string filename;
+    ifstream ifs;
+    Bank *bank = nullptr;
+
+    sem_init(&sem, 0, 1);
+   
+    while(argc-- > 1)
+    {
+        filename = *++argv;
+        ifs.open(filename);
+        if (!ifs.is_open())
+        {
+          cerr << "\nn warning could not open the file " << filename << "\n";
+          exit(-1);
+        }
+
+        cout << " \n\n =====================================================\n";
+        cout << "//           PROCESSING FILENAME: " << filename << "\n";
+        cout << "//======================================================\n";
+      
+        if(bank != nullptr)
+        {
+          delete bank;
+          bank = nullptr;
+        }
+
+        process_filestream(ifs, bank);
+        run_simulation(bank);
+
+        cout << "//==============================================================\n";
+        cout << "//===================== FINISHED PROCESSING FILENAME: " << filename << "\n";
+        cout << "//=================================================================\n\n\n";
+      
+      
+        
+    }
+
+    sem_destroy(&sem);
+    return 0;
+      
+}
+
+
+
+
+
+
+
+int main(int argc, const char *argv[]) 
+{
+
+  if (argc == 1)
+  {
+    cerr << "usage: ./bank_algo filename1 filename2 ...\n\n";
     exit(-2);
   }
 
-  std::string filename = argv[1];
-  std::ifstream ifs(filename);
 
-  if (!ifs.is_open()) {
-    std::cerr << "\n\nWarning, could not open file '" << filename << "'\n\n";
-    exit(-1);
-  }
 
-  // now we have the filestream open
-  Bank *bank = nullptr;
-  sem_init(&sem, 0, 1); // OR use your version of sem_create
-
-  process_filestream(ifs, bank);
-
-  run_simulation(bank);
-
-  sem_destroy(&sem); // OR use your version of sem_release
-
-  std::cout << "\n\t...done.  (all processes should show 0 resources left when "
-               "finished)\n";
-  std::cout << "\t\t... Test with all input files provided...\n";
-  std::cout
-      << "\t\t... data/bankers_tinier.txt, data/bankers_tiny.txt, ...\n\n";
-  return 0;
+  return process_files(argc, argv);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// running file by file
+//if (argc != 2) {
+  //   cerr << "Usage: ./bank_algo filename\n\n";
+  //   exit(-2);
+  // }
+
+  // string filename = argv[1];
+  // ifstream ifs(filename);
+
+  // if (!ifs.is_open()) {
+  //   cerr << "\n\nWarning, could not open file '" << filename << "'\n\n";
+  //   exit(-1);
+  // }
+
+  // // now we have the filestream open
+  // Bank *bank = nullptr;
+  // sem_init(&sem, 0, 1); // OR use your version of sem_create
+
+  // process_filestream(ifs, bank);
+
+  // run_simulation(bank);
+
+  // sem_destroy(&sem); // OR use your version of sem_release
+
+  // cout << "\n\t...done.  (all processes should show 0 resources left when "
+  //              "finished)\n";
+  // cout << "\t\t... Test with all input files provided...\n";
+  // cout
+  //     << "\t\t... data/bankers_tinier.txt, data/bankers_tiny.txt, ...\n\n";

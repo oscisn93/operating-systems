@@ -8,7 +8,7 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"-pthread",
+				"-lpthread",
 				"-std=c++17",
 				"${file}",
 				"-o",
