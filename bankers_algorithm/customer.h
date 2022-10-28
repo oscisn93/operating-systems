@@ -17,7 +17,6 @@ class Bank;
 
 class Customer {
 public:
-//  Customer() = default;
   Customer(int index, const vector_<int>& allocate, const vector_<int>& maximum, Bank* bank_=nullptr)
   : idx(index), alloc(allocate), max_(maximum), need(max_ - alloc), bank(bank_) { }
   
@@ -59,11 +58,11 @@ public:
     return os;
   }
 
-  vector_<int> create_req() {    // TODO:  must be updated to make more reasonable requests
+  vector_<int> create_req() {
     vector_<int> req;
     for (size_t i = 0; i < alloc.size(); ++i) {
       if (need[i] == 0) { req.push_back(0);  continue; }
-      int val = (int)((rand() % 3) + 1);
+      int val = (int)((rand() % max_[i]) + 1);
       req.push_back(val);
     }
     return req;

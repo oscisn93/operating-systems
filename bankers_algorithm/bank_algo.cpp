@@ -12,21 +12,20 @@
 #include <iostream>
 #include <semaphore.h>
 #include <string.h>
+
 using namespace std;
+
 sem_t sem;
 
 void *runner(void *param) { // thread runner
   Customer *c = (Customer *)param;
-
   sem_wait(&sem);
   Utils::print_locked("%s%d%s", "<<< Customer thread p#", c->get_id(),
                       " started... >>>\n");
   sem_post(&sem);
 
   Bank *b = c->get_bank();
-  // TODO...
-  int counter = 50; // for debugging purposes, just stop after 50 iterations
-  //                        remove this when algorithm fully working
+  int counter = 50; // remove this when algorithm fully working
 
   while (!c->needs_met() && counter-- > 0) {
     vector_<int> req = c->create_req();
@@ -51,21 +50,17 @@ void *runner(void *param) { // thread runner
         sem_post(&sem);
       }
     } else {
-      // TODO: ditto
       sem_wait(&sem);
       Utils::print_locked("P%d requesting: %s     --- Request DENIED\n", idx,
                           (req.as_string()).c_str());
-      // TODO: ditto
       sem_post(&sem);
     }
   }
-  // TODO: ditto
   sem_wait(&sem);
   Utils::print_locked(">>>>>>>>>>>>>>> Customer thread p#%d shutting down... "
                       "<<<<<<<<<<<<<<<<<\n\n",
                       c->get_id());
   b->show();
-  // TODO: ditto
   sem_post(&sem);
 
   pthread_exit(0);
@@ -75,21 +70,21 @@ void run_simulation(Bank *bank) {
   Utils::print_locked(
       "\nBanker's algorithm simulation "
       "beginning...\n--------------------------------------------\n");
-  bank->show();
 
+  bank->show();
   // start threads
   pthread_attr_t attr;
   pthread_attr_init(&attr); /* get the default attributes */
-
   vector_<Customer *> customers = bank->get_customers();
+
   for (Customer *c : customers) {
     pthread_create(c->get_threadid(), &attr, runner, c);
   }
-
   // join threads
   for (Customer *c : customers) {
     pthread_join(*c->get_threadid(), NULL);
   }
+
   Utils::print_locked("\nBanker's algorithm simulation completed...\n\n");
 }
 
@@ -136,8 +131,8 @@ void process_filestream(
       vector_<int> max;
       size_t size = bank->get_avail().size();
       for (size_t i = 0; i < size; ++i) {
-        alloc.add(res[i]);      // e.g., for size = 2,  0, 1
-        max.add(res[i + size]); // ditto,               2, 3
+        alloc.add(res[i]); // e.g., for size = 2, 0, 1, 2, 3
+        max.add(res[i + size]);
       }
       Customer *c = new Customer(idx++, alloc, max, bank);
       bank->add_customer(c);
@@ -146,120 +141,51 @@ void process_filestream(
   ifs.close();
 }
 
-int process_files(int argc, const char *argv[])
-{
-    string filename;
-    ifstream ifs;
-    Bank *bank = nullptr;
+int process_files(int argc, const char *argv[]) {
+  string filename;
+  ifstream ifs;
+  Bank *bank = nullptr;
+  sem_init(&sem, 0, 1);
 
-    sem_init(&sem, 0, 1);
-   
-    while(argc-- > 1)
-    {
-        filename = *++argv;
-        ifs.open(filename);
-        if (!ifs.is_open())
-        {
-          cerr << "\nn warning could not open the file " << filename << "\n";
-          exit(-1);
-        }
+  while (argc-- > 1) {
+    filename = *++argv;
+    ifs.open(filename);
 
-        cout << " \n\n =====================================================\n";
-        cout << "//           PROCESSING FILENAME: " << filename << "\n";
-        cout << "//======================================================\n";
-      
-        if(bank != nullptr)
-        {
-          delete bank;
-          bank = nullptr;
-        }
-
-        process_filestream(ifs, bank);
-        run_simulation(bank);
-
-        cout << "//==============================================================\n";
-        cout << "//===================== FINISHED PROCESSING FILENAME: " << filename << "\n";
-        cout << "//=================================================================\n\n\n";
-      
-      
-        
+    if (!ifs.is_open()) {
+      cerr << "\nn warning could not open the file " << filename << "\n";
+      exit(-1);
     }
 
-    sem_destroy(&sem);
-    return 0;
-      
+    cout << " \n\n =====================================================\n";
+    cout << "//           PROCESSING FILENAME: " << filename << "\n";
+    cout << "//======================================================\n";
+
+    if (bank != nullptr) {
+      delete bank;
+      bank = nullptr;
+    }
+
+    process_filestream(ifs, bank);
+    run_simulation(bank);
+
+    cout
+        << "//==============================================================\n";
+    cout << "//===================== FINISHED PROCESSING FILENAME: " << filename
+         << "\n";
+    cout << "//"
+            "================================================================="
+            "\n\n\n";
+  }
+
+  sem_destroy(&sem);
+
+  return 0;
 }
 
-
-
-
-
-
-
-int main(int argc, const char *argv[]) 
-{
-
-  if (argc == 1)
-  {
+int main(int argc, const char *argv[]) {
+  if (argc == 1) {
     cerr << "usage: ./bank_algo filename1 filename2 ...\n\n";
     exit(-2);
   }
-
-
-
   return process_files(argc, argv);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// running file by file
-//if (argc != 2) {
-  //   cerr << "Usage: ./bank_algo filename\n\n";
-  //   exit(-2);
-  // }
-
-  // string filename = argv[1];
-  // ifstream ifs(filename);
-
-  // if (!ifs.is_open()) {
-  //   cerr << "\n\nWarning, could not open file '" << filename << "'\n\n";
-  //   exit(-1);
-  // }
-
-  // // now we have the filestream open
-  // Bank *bank = nullptr;
-  // sem_init(&sem, 0, 1); // OR use your version of sem_create
-
-  // process_filestream(ifs, bank);
-
-  // run_simulation(bank);
-
-  // sem_destroy(&sem); // OR use your version of sem_release
-
-  // cout << "\n\t...done.  (all processes should show 0 resources left when "
-  //              "finished)\n";
-  // cout << "\t\t... Test with all input files provided...\n";
-  // cout
-  //     << "\t\t... data/bankers_tinier.txt, data/bankers_tiny.txt, ...\n\n";
