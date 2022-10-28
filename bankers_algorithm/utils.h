@@ -7,8 +7,12 @@
 #ifndef __utils_h__
 #define __utils_h__
 
+#include <pthread.h>
 #include <semaphore.h>
+#include <mutex>
 #include <cstdarg>
+#include <ctype.h>
+#include <iostream>
 
 
 std::mutex& get_common_mutex() { 

@@ -3,5 +3,6 @@
         "initializer_list": "cpp",
         "iostream": "cpp",
         "string": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

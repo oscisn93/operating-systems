@@ -31,9 +31,9 @@ public:
     for (int i = 0; i < n; ++i) { 
       if (req[i] > need[i]) { return true; }
     }
-    return false; 
+    return false;
   }
-  
+
   int get_idx() const { return idx; }
   const vector_<int>& get_alloc() const { return alloc; }
   const vector_<int>& get_max()   const { return max_; }

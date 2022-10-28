@@ -1,0 +1,531 @@
+ 
+
+ =====================================================
+//           PROCESSING FILENAME: data/bankers_medium.txt
+//======================================================
+buf is: 13, 12, 12, 9
+buf is: 3, 4, 2, 1,   5, 6, 7, 3
+buf is: 2, 2, 2, 2,   3, 3, 2, 2
+buf is: 1, 1, 0, 1,   2, 3, 4, 2
+buf is: 2, 1, 3, 0,   4, 3, 5, 1
+buf is: 1, 2, 1, 2,   2, 3, 2, 3
+buf is: 1, 0, 0, 1,   2, 1, 1, 2
+buf is: 
+
+Banker's algorithm simulation beginning...
+--------------------------------------------
+
++-----------------------------------------
+|   BANK   avail: [13 12 12  9]
++-----------------------------------------
+| P#  0    3  4  2  1    5  6  7  3    2  2  5  2
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    1  1  0  1    2  3  4  2    1  2  4  1
+| P#  3    2  1  3  0    4  3  5  1    2  2  2  1
+| P#  4    1  2  1  2    2  3  2  3    1  1  1  1
+| P#  5    1  0  0  1    2  1  1  2    1  1  1  1
++----------------------------------------
+<<< Customer thread p#0 started... >>>
+P0 requesting:  4  5  3  2     --- Request DENIED
+P0 requesting:  4  2  4  1     --- Request DENIED
+P0 requesting:  5  2  3  2     --- Request DENIED
+P0 requesting:  1  2  7  2     --- Request DENIED
+P0 requesting:  1  1  3  2    ............. request APPROVED!
+
++-----------------------------------------
+|   BANK   avail: [12 11  9  7]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    1  1  0  1    2  3  4  2    1  2  4  1
+| P#  3    2  1  3  0    4  3  5  1    2  2  2  1
+| P#  4    1  2  1  2    2  3  2  3    1  1  1  1
+| P#  5    1  0  0  1    2  1  1  2    1  1  1  1
++----------------------------------------
+P0 requesting:  2  3  6  0     --- Request DENIED
+P0 requesting:  5  3  6  0     --- Request DENIED
+P0 requesting:  3  2  2  0     --- Request DENIED
+P0 requesting:  1  6  1  0     --- Request DENIED
+P0 requesting:  3  1  4  0     --- Request DENIED
+P0 requesting:  3  2  1  0     --- Request DENIED
+P0 requesting:  2  5  2  0     --- Request DENIED
+P0 requesting:  4  4  1  0     --- Request DENIED
+<<< Customer thread p#3 started... >>>
+P3 requesting:  1  3  1  1     --- Request DENIED
+P3 requesting:  3  2  1  1     --- Request DENIED
+P3 requesting:  2  3  1  1     --- Request DENIED
+<<< Customer thread p#2 started... >>>
+P3 requesting:  2  1  1  1    ............. request APPROVED!
+
++-----------------------------------------
+|   BANK   avail: [10 10  8  6]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    1  1  0  1    2  3  4  2    1  2  4  1
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    1  2  1  2    2  3  2  3    1  1  1  1
+| P#  5    1  0  0  1    2  1  1  2    1  1  1  1
++----------------------------------------
+P3 requesting:  0  1  4  0     --- Request DENIED
+P3 requesting:  0  3  5  0     --- Request DENIED
+P3 requesting:  0  1  3  0     --- Request DENIED
+<<< Customer thread p#4 started... >>>
+P2 requesting:  2  3  2  1     --- Request DENIED
+P2 requesting:  1  1  3  1    ............. request APPROVED!
+
++-----------------------------------------
+|   BANK   avail: [ 9  9  5  5]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    2  2  3  2    2  3  4  2    0  1  1  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    1  2  1  2    2  3  2  3    1  1  1  1
+| P#  5    1  0  0  1    2  1  1  2    1  1  1  1
++----------------------------------------
+P2 requesting:  0  1  1  0    ............. request APPROVED!
+
++-----------------------------------------
+|   BANK   avail: [ 9  8  4  5]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    2  3  4  2    2  3  4  2    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    1  2  1  2    2  3  2  3    1  1  1  1
+| P#  5    1  0  0  1    2  1  1  2    1  1  1  1
++----------------------------------------
+Customer p#2 has released all resources and is shutting down
+
++-----------------------------------------
+|   BANK   avail: [11 11  8  7]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    1  2  1  2    2  3  2  3    1  1  1  1
+| P#  5    1  0  0  1    2  1  1  2    1  1  1  1
++----------------------------------------
+>>>>>>>>>>>>>>> Customer thread p#2 shutting down... <<<<<<<<<<<<<<<<<
+
+
++-----------------------------------------
+|   BANK   avail: [11 11  8  7]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    1  2  1  2    2  3  2  3    1  1  1  1
+| P#  5    1  0  0  1    2  1  1  2    1  1  1  1
++----------------------------------------
+P4 requesting:  2  1  1  2     --- Request DENIED
+P4 requesting:  1  3  1  1     --- Request DENIED
+P4 requesting:  2  3  2  1     --- Request DENIED
+P4 requesting:  1  3  1  2     --- Request DENIED
+P4 requesting:  1  2  1  1     --- Request DENIED
+P4 requesting:  2  1  1  3     --- Request DENIED
+P4 requesting:  1  3  2  3     --- Request DENIED
+P4 requesting:  1  1  1  2     --- Request DENIED
+P4 requesting:  1  2  1  3     --- Request DENIED
+P4 requesting:  2  1  2  2     --- Request DENIED
+P4 requesting:  2  2  2  1     --- Request DENIED
+P4 requesting:  2  1  2  1     --- Request DENIED
+P4 requesting:  2  1  2  1     --- Request DENIED
+P4 requesting:  1  3  2  1     --- Request DENIED
+P4 requesting:  2  2  2  3     --- Request DENIED
+P4 requesting:  1  2  2  3     --- Request DENIED
+P4 requesting:  2  1  2  1     --- Request DENIED
+P4 requesting:  1  2  2  2     --- Request DENIED
+P4 requesting:  2  1  2  3     --- Request DENIED
+P4 requesting:  2  3  2  2     --- Request DENIED
+P4 requesting:  2  3  1  3     --- Request DENIED
+P4 requesting:  1  2  1  2     --- Request DENIED
+P4 requesting:  1  3  1  1     --- Request DENIED
+P4 requesting:  1  3  1  1     --- Request DENIED
+P4 requesting:  2  3  2  1     --- Request DENIED
+P4 requesting:  1  2  2  3     --- Request DENIED
+P4 requesting:  1  3  2  1     --- Request DENIED
+P4 requesting:  2  3  2  3     --- Request DENIED
+P4 requesting:  2  1  2  3     --- Request DENIED
+P4 requesting:  1  1  2  1     --- Request DENIED
+P4 requesting:  2  3  1  2     --- Request DENIED
+P4 requesting:  2  3  1  3     --- Request DENIED
+P4 requesting:  1  2  1  1     --- Request DENIED
+P4 requesting:  1  1  2  3     --- Request DENIED
+P4 requesting:  1  3  2  1     --- Request DENIED
+P4 requesting:  2  3  2  2     --- Request DENIED
+P4 requesting:  2  2  1  3     --- Request DENIED
+P4 requesting:  2  3  1  1     --- Request DENIED
+<<< Customer thread p#5 started... >>>
+P4 requesting:  1  1  1  2     --- Request DENIED
+P4 requesting:  2  2  1  3     --- Request DENIED
+P4 requesting:  1  1  2  1     --- Request DENIED
+P3 requesting:  0  2  1  0     --- Request DENIED
+P4 requesting:  1  2  2  2     --- Request DENIED
+P4 requesting:  1  2  2  1     --- Request DENIED
+P4 requesting:  1  2  1  1     --- Request DENIED
+P4 requesting:  2  3  1  1     --- Request DENIED
+P4 requesting:  1  3  2  1     --- Request DENIED
+P4 requesting:  1  1  1  3     --- Request DENIED
+P4 requesting:  2  1  1  3     --- Request DENIED
+P4 requesting:  2  1  2  1     --- Request DENIED
+P4 requesting:  1  2  1  2     --- Request DENIED
+P4 requesting:  2  2  2  3     --- Request DENIED
+P4 requesting:  1  1  2  2     --- Request DENIED
+P4 requesting:  1  3  2  3     --- Request DENIED
+P4 requesting:  1  3  1  2     --- Request DENIED
+P0 requesting:  5  2  7  0     --- Request DENIED
+P4 requesting:  1  1  1  1    ............. request APPROVED!
+
++-----------------------------------------
+|   BANK   avail: [10 10  7  6]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    2  3  2  3    2  3  2  3    0  0  0  0
+| P#  5    1  0  0  1    2  1  1  2    1  1  1  1
++----------------------------------------
+Customer p#4 has released all resources and is shutting down
+
++-----------------------------------------
+|   BANK   avail: [12 13  9  9]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    1  0  0  1    2  1  1  2    1  1  1  1
++----------------------------------------
+>>>>>>>>>>>>>>> Customer thread p#4 shutting down... <<<<<<<<<<<<<<<<<
+
+
++-----------------------------------------
+|   BANK   avail: [12 13  9  9]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    1  0  0  1    2  1  1  2    1  1  1  1
++----------------------------------------
+P5 requesting:  2  1  1  2     --- Request DENIED
+P5 requesting:  2  1  1  1     --- Request DENIED
+P5 requesting:  1  1  1  2     --- Request DENIED
+P5 requesting:  1  1  1  2     --- Request DENIED
+P5 requesting:  1  1  1  1    ............. request APPROVED!
+
++-----------------------------------------
+|   BANK   avail: [11 12  8  8]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    2  1  1  2    2  1  1  2    0  0  0  0
++----------------------------------------
+Customer p#5 has released all resources and is shutting down
+
++-----------------------------------------
+|   BANK   avail: [13 13  9 10]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+>>>>>>>>>>>>>>> Customer thread p#5 shutting down... <<<<<<<<<<<<<<<<<
+
+
++-----------------------------------------
+|   BANK   avail: [13 13  9 10]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    2  2  2  2    3  3  2  2    1  1  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+P0 requesting:  3  4  6  0     --- Request DENIED
+P0 requesting:  2  2  7  0     --- Request DENIED
+P0 requesting:  5  4  3  0     --- Request DENIED
+P0 requesting:  5  2  5  0     --- Request DENIED
+P0 requesting:  3  6  7  0     --- Request DENIED
+P0 requesting:  3  3  5  0     --- Request DENIED
+P0 requesting:  4  1  4  0     --- Request DENIED
+P0 requesting:  3  6  6  0     --- Request DENIED
+P0 requesting:  5  5  5  0     --- Request DENIED
+P0 requesting:  3  3  7  0     --- Request DENIED
+P0 requesting:  1  3  3  0     --- Request DENIED
+P0 requesting:  1  3  2  0     --- Request DENIED
+P0 requesting:  4  3  3  0     --- Request DENIED
+<<< Customer thread p#1 started... >>>
+P0 requesting:  5  3  4  0     --- Request DENIED
+P0 requesting:  2  1  7  0     --- Request DENIED
+P3 requesting:  0  2  1  0     --- Request DENIED
+P3 requesting:  0  3  4  0     --- Request DENIED
+P3 requesting:  0  3  1  0     --- Request DENIED
+P3 requesting:  0  2  1  0     --- Request DENIED
+P3 requesting:  0  2  5  0     --- Request DENIED
+P3 requesting:  0  2  4  0     --- Request DENIED
+P3 requesting:  0  2  2  0     --- Request DENIED
+P3 requesting:  0  2  5  0     --- Request DENIED
+P3 requesting:  0  2  2  0     --- Request DENIED
+P3 requesting:  0  3  2  0     --- Request DENIED
+P3 requesting:  0  1  5  0     --- Request DENIED
+P3 requesting:  0  2  3  0     --- Request DENIED
+P3 requesting:  0  3  5  0     --- Request DENIED
+P3 requesting:  0  2  3  0     --- Request DENIED
+P3 requesting:  0  1  4  0     --- Request DENIED
+P3 requesting:  0  2  3  0     --- Request DENIED
+P3 requesting:  0  1  4  0     --- Request DENIED
+P3 requesting:  0  1  2  0     --- Request DENIED
+P3 requesting:  0  1  4  0     --- Request DENIED
+P3 requesting:  0  3  4  0     --- Request DENIED
+P3 requesting:  0  2  4  0     --- Request DENIED
+P3 requesting:  0  3  1  0     --- Request DENIED
+P0 requesting:  5  5  3  0     --- Request DENIED
+P0 requesting:  2  3  1  0     --- Request DENIED
+P0 requesting:  1  1  5  0     --- Request DENIED
+P0 requesting:  3  6  5  0     --- Request DENIED
+P0 requesting:  4  2  7  0     --- Request DENIED
+P0 requesting:  3  6  2  0     --- Request DENIED
+P0 requesting:  2  4  4  0     --- Request DENIED
+P0 requesting:  2  2  7  0     --- Request DENIED
+P0 requesting:  3  4  3  0     --- Request DENIED
+P0 requesting:  1  3  1  0     --- Request DENIED
+P0 requesting:  1  3  3  0     --- Request DENIED
+P0 requesting:  3  3  3  0     --- Request DENIED
+P0 requesting:  2  3  1  0     --- Request DENIED
+P0 requesting:  3  2  6  0     --- Request DENIED
+P0 requesting:  5  3  6  0     --- Request DENIED
+P0 requesting:  4  3  6  0     --- Request DENIED
+P0 requesting:  3  1  6  0     --- Request DENIED
+P0 requesting:  2  6  6  0     --- Request DENIED
+P0 requesting:  5  3  1  0     --- Request DENIED
+P0 requesting:  3  1  4  0     --- Request DENIED
+P0 requesting:  5  1  1  0     --- Request DENIED
+P0 requesting:  5  6  7  0     --- Request DENIED
+P0 requesting:  3  5  3  0     --- Request DENIED
+P0 requesting:  2  6  7  0     --- Request DENIED
+P0 requesting:  3  5  6  0     --- Request DENIED
+P0 requesting:  1  6  6  0     --- Request DENIED
+P0 requesting:  5  5  4  0     --- Request DENIED
+P0 requesting:  1  4  4  0     --- Request DENIED
+P0 requesting:  2  3  1  0     --- Request DENIED
+P0 requesting:  3  1  7  0     --- Request DENIED
+P0 requesting:  4  6  2  0     --- Request DENIED
+P0 requesting:  5  1  1  0     --- Request DENIED
+P0 requesting:  2  4  3  0     --- Request DENIED
+P0 requesting:  5  1  6  0     --- Request DENIED
+P0 requesting:  5  6  5  0     --- Request DENIED
+P0 requesting:  4  4  6  0     --- Request DENIED
+P0 requesting:  3  5  6  0     --- Request DENIED
+P0 requesting:  2  1  3  0     --- Request DENIED
+P0 requesting:  2  3  6  0     --- Request DENIED
+P0 requesting:  5  1  5  0     --- Request DENIED
+P0 requesting:  3  5  7  0     --- Request DENIED
+P0 requesting:  1  6  3  0     --- Request DENIED
+P0 requesting:  3  2  4  0     --- Request DENIED
+P0 requesting:  2  1  2  0     --- Request DENIED
+P0 requesting:  3  3  3  0     --- Request DENIED
+P0 requesting:  5  3  1  0     --- Request DENIED
+P0 requesting:  5  3  3  0     --- Request DENIED
+P0 requesting:  2  3  3  0     --- Request DENIED
+P0 requesting:  3  5  7  0     --- Request DENIED
+P0 requesting:  2  5  7  0     --- Request DENIED
+P0 requesting:  2  4  4  0     --- Request DENIED
+P0 requesting:  1  2  7  0     --- Request DENIED
+P0 requesting:  1  2  5  0     --- Request DENIED
+P0 requesting:  4  6  6  0     --- Request DENIED
+P0 requesting:  4  3  5  0     --- Request DENIED
+P0 requesting:  3  4  3  0     --- Request DENIED
+P0 requesting:  3  1  5  0     --- Request DENIED
+P0 requesting:  5  4  5  0     --- Request DENIED
+P0 requesting:  1  2  3  0     --- Request DENIED
+P0 requesting:  4  6  1  0     --- Request DENIED
+P0 requesting:  5  6  6  0     --- Request DENIED
+P0 requesting:  2  4  3  0     --- Request DENIED
+P0 requesting:  1  2  7  0     --- Request DENIED
+P0 requesting:  5  6  4  0     --- Request DENIED
+P0 requesting:  3  5  3  0     --- Request DENIED
+P0 requesting:  3  4  2  0     --- Request DENIED
+P0 requesting:  3  3  2  0     --- Request DENIED
+P0 requesting:  2  6  6  0     --- Request DENIED
+P0 requesting:  2  6  5  0     --- Request DENIED
+P0 requesting:  2  2  7  0     --- Request DENIED
+P3 requesting:  0  1  3  0     --- Request DENIED
+P0 requesting:  2  2  3  0     --- Request DENIED
+P0 requesting:  1  3  7  0     --- Request DENIED
+P0 requesting:  2  5  4  0     --- Request DENIED
+P0 requesting:  3  4  2  0     --- Request DENIED
+P1 requesting:  1  1  0  0    ............. request APPROVED!
+
++-----------------------------------------
+|   BANK   avail: [12 12  9 10]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    3  3  2  2    3  3  2  2    0  0  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+Customer p#1 has released all resources and is shutting down
+
++-----------------------------------------
+|   BANK   avail: [15 15 11 12]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+>>>>>>>>>>>>>>> Customer thread p#1 shutting down... <<<<<<<<<<<<<<<<<
+
+
++-----------------------------------------
+|   BANK   avail: [15 15 11 12]
++-----------------------------------------
+| P#  0    4  5  5  3    5  6  7  3    1  1  2  0
+| P#  1    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+P0 requesting:  2  5  6  0     --- Request DENIED
+P0 requesting:  1  1  6  0     --- Request DENIED
+P0 requesting:  1  1  7  0     --- Request DENIED
+P0 requesting:  5  4  4  0     --- Request DENIED
+P0 requesting:  2  1  3  0     --- Request DENIED
+P0 requesting:  4  6  5  0     --- Request DENIED
+P0 requesting:  3  5  5  0     --- Request DENIED
+P0 requesting:  2  6  6  0     --- Request DENIED
+P0 requesting:  2  5  6  0     --- Request DENIED
+P0 requesting:  1  4  2  0     --- Request DENIED
+P0 requesting:  5  4  5  0     --- Request DENIED
+P0 requesting:  5  2  7  0     --- Request DENIED
+P0 requesting:  1  1  1  0    ............. request APPROVED!
+
++-----------------------------------------
+|   BANK   avail: [14 14 10 12]
++-----------------------------------------
+| P#  0    5  6  6  3    5  6  7  3    0  0  1  0
+| P#  1    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+P0 requesting:  0  0  5  0     --- Request DENIED
+P0 requesting:  0  0  2  0     --- Request DENIED
+P0 requesting:  0  0  7  0     --- Request DENIED
+P0 requesting:  0  0  6  0     --- Request DENIED
+P0 requesting:  0  0  6  0     --- Request DENIED
+P0 requesting:  0  0  4  0     --- Request DENIED
+P0 requesting:  0  0  2  0     --- Request DENIED
+P3 requesting:  0  3  5  0     --- Request DENIED
+P3 requesting:  0  3  4  0     --- Request DENIED
+P3 requesting:  0  3  2  0     --- Request DENIED
+P3 requesting:  0  2  2  0     --- Request DENIED
+P3 requesting:  0  1  4  0     --- Request DENIED
+P3 requesting:  0  1  5  0     --- Request DENIED
+P3 requesting:  0  1  5  0     --- Request DENIED
+P0 requesting:  0  0  2  0     --- Request DENIED
+P0 requesting:  0  0  5  0     --- Request DENIED
+P0 requesting:  0  0  1  0    ............. request APPROVED!
+
++-----------------------------------------
+|   BANK   avail: [14 14  9 12]
++-----------------------------------------
+| P#  0    5  6  7  3    5  6  7  3    0  0  0  0
+| P#  1    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+Customer p#0 has released all resources and is shutting down
+
++-----------------------------------------
+|   BANK   avail: [19 20 16 15]
++-----------------------------------------
+| P#  0    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  1    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+>>>>>>>>>>>>>>> Customer thread p#0 shutting down... <<<<<<<<<<<<<<<<<
+
+
++-----------------------------------------
+|   BANK   avail: [19 20 16 15]
++-----------------------------------------
+| P#  0    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  1    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  2  4  1    4  3  5  1    0  1  1  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+P3 requesting:  0  3  3  0     --- Request DENIED
+P3 requesting:  0  1  1  0    ............. request APPROVED!
+
++-----------------------------------------
+|   BANK   avail: [19 19 15 15]
++-----------------------------------------
+| P#  0    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  1    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    4  3  5  1    4  3  5  1    0  0  0  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+Customer p#3 has released all resources and is shutting down
+
++-----------------------------------------
+|   BANK   avail: [23 22 20 16]
++-----------------------------------------
+| P#  0    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  1    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+>>>>>>>>>>>>>>> Customer thread p#3 shutting down... <<<<<<<<<<<<<<<<<
+
+
++-----------------------------------------
+|   BANK   avail: [23 22 20 16]
++-----------------------------------------
+| P#  0    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  1    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  2    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  3    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  4    0  0  0  0    0  0  0  0    0  0  0  0
+| P#  5    0  0  0  0    0  0  0  0    0  0  0  0
++----------------------------------------
+
+Banker's algorithm simulation completed...
+
+//==============================================================
+//===================== FINISHED PROCESSING FILENAME: data/bankers_medium.txt
+//=================================================================
+
+

@@ -18,15 +18,25 @@ class Bank {
 public:
   Bank() = default;
   Bank(const vector_<int> &available) : avail(available), customers() {}
-
+  vector_<int> zero_vector = vector_(get_avail().size(), 0);
   vector_<int> get_avail() const { return avail; }
   bool is_avail(const vector_<int> &req) const { return req < avail; }
 
-  bool is_safe(int id, const vector_<int> &req) { return true; }
+  bool is_safe(int id, const vector_<int> &req) {
+    vector_<int> avail_copy = vector_<int>(avail);
+    for (Customer *c : customers) {
+      if (avail_copy - (c -> get_need()) < zero_vector) {
+        return false;
+      }
+      avail_copy -= c -> get_need();
+      avail_copy += c -> get_max();
+    }
+    return true;
+  }
 
   bool req_approved(int id, const vector_<int> &req) {
     Customer *c = customers[id];
-    return !c->too_much(req);
+    return (!c->too_much(req) && is_safe(id, req));
   }
 
   void add_customer(Customer *c) { customers.push_back(c); }

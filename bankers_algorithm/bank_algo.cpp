@@ -25,9 +25,8 @@ void *runner(void *param) { // thread runner
   sem_post(&sem);
 
   Bank *b = c->get_bank();
-  int counter = 50; // remove this when algorithm fully working
 
-  while (!c->needs_met() && counter-- > 0) {
+  while (!c->needs_met()) {
     vector_<int> req = c->create_req();
     int idx = c->get_id();
     bool approved = b->req_approved(idx, req);
