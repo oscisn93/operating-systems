@@ -157,7 +157,7 @@ void summarize(size_t pg_faults, size_t tlb_hits) {
   printf("\n\t\t...done.\n");
 }
 
-void tlb_add(int index, page_node entry) {
+void tlb_add(page_node entry) {
   if (tlb.size() >= TLB_SIZE && tlb.front() != entry) {
     tlb.pop_front();
   }
@@ -165,7 +165,9 @@ void tlb_add(int index, page_node entry) {
   tlb.push_back(entry);
 }
 
-void tlb_remove(int index) {} // TODO
+void tlb_remove(int index) {
+
+} // TODO
 
 void tlb_hit(size_t &frame, size_t &page, size_t &tlb_hits, int result) {
 } // TODO
@@ -204,7 +206,7 @@ void page_fault(size_t &frame, size_t &page, size_t &frames_used,
     *(ram + (frame * FRAME_SIZE) + i) = buf[i];
   }
   update_frame_ptable(page, frame);
-  tlb_add(tlb_track++, pg_table[page]);
+  tlb_add(pg_table[page]);
   if (tlb_track > 15) {
     tlb_track = 0;
   }
