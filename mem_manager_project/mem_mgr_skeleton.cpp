@@ -23,7 +23,7 @@
 #define PTABLE_SIZE 256
 #define TLB_SIZE 16
 
-struct page_node 
+struct page_node // each page node in page table/ TLB has this page_node
 {
   size_t npage;
   size_t frame_num;
@@ -209,13 +209,35 @@ void tlb_remove(int index)
 } // TODO
 
 void tlb_hit(size_t &frame, size_t &page, size_t &tlb_hits, int result) 
-{
+{ // result is used as an index in case we have array_tlb, but here we are using list
+  
+
+  //   if (tlb.size() == page && tlb.size() == frame)
+  //   {
+  //     result = tlb_hits++;
+  //   }
+  for (page_node i: tlb)
+  {
+    if (page == i.npage)
+    {
+      frame = i.frame_num;
+
+    }
+    tlb_hits++;
+  }
+
 
 } // TODO
 
 void tlb_miss(size_t &frame, size_t &page, size_t &tlb_track) 
 {
-    frame = pg_table[page].frame_num;
+    frame = pg_table[page].frame_num; // [page] is index in page table .frame_num |page[frame]|
+
+    // if (tlb.size() != page && tlb.size() != frame )
+    // {
+
+    // }
+
 } // TODO
 
 void fifo_replace_page(size_t &frame) 
