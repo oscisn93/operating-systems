@@ -237,12 +237,18 @@ void tlb_miss(size_t &frame, size_t &page, size_t &tlb_track)
 
 void fifo_replace_page(size_t &frame) 
 {
-
+    for (page_node i: tlb)
+    {
+      find_frame_ptable(frame);
+    }
 } // TODO
 
 void lru_replace_page(size_t &frame) 
 {
-
+  for (page_node i: tlb)
+  {   
+    frame = get_used_ptable();
+  }
 } // TODO
 
 void page_fault(size_t &frame, size_t &page, size_t &frames_used, size_t &pg_faults, size_t &tlb_track, FILE *fbacking) 
