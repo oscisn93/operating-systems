@@ -55,8 +55,8 @@ size_t get_offset(size_t x) { return 0xff & x; }
 void get_page_offset(size_t x, size_t &page, size_t &offset) {
   page = get_page(x);
   offset = get_offset(x);
-  printf("x is: %zu, page: %zu, offset: %zu, address: %zu, paddress: %zu\n",
-         x, page, offset, (page << 8) | get_offset(x), page * 256 + offset);
+  printf("x is: %zu, page: %zu, offset: %zu, address: %zu, paddress: %zu\n", x,
+         page, offset, (page << 8) | get_offset(x), page * 256 + offset);
 }
 
 void update_frame_ptable(size_t npage, size_t frame_num) {
@@ -186,7 +186,7 @@ void fifo_replace_page(size_t &frame) {
 void lru_replace_page(size_t &frame) {
   size_t pg_num = get_used_ptable();
   frame = pg_table[pg_num].frame_num;
-  pg_table[pg_num].is_present =false;
+  pg_table[pg_num].is_present = false;
   pg_table[pg_num].is_used = false;
 }
 
@@ -275,7 +275,8 @@ void run_simulation() {
     get_page_offset(logic_add, page, offset);
 
     int result = check_tlb(page);
-    printf("------------ Iteration Number %d ----------\tpage:%zu\n", (o + 1), page);
+    printf("------------ Iteration Number %d ----------\tpage:%zu\n", (o + 1),
+           page);
     if (result >= 0) {
       tlb_hit(frame, page, tlb_hits, result);
     } else if (pg_table[page].is_present) {
