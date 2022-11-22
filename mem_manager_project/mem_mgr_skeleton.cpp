@@ -12,6 +12,7 @@
 
 #define ARGC_ERROR 1
 #define FILE_ERROR 2
+#define test 11
 
 #define FRAME_SIZE 256
 #define FIFO 0
@@ -23,12 +24,15 @@
 #define PTABLE_SIZE 256
 #define TLB_SIZE 16
 
-// each page node in pg_table/TLB has this page_node
+// an object that represents a page node
+// with overloaded equality / inequality operators
 struct page_node {
+  // index in pg_table
   size_t npage;
   size_t frame_num;
   bool is_present;
   bool is_used;
+  // strict equality of all page node atttributes
   bool operator==(const page_node &other) {
     return npage == other.npage && frame_num == other.frame_num &&
            is_present == other.is_present && is_used == other.is_used;
@@ -151,6 +155,7 @@ void tlb_add(page_node entry) {
   }
   tlb.remove(entry);
   tlb.push_back(entry);
+  printf("\ttlb_size: %zu\t", tlb.size());
 }
 
 // replace page
@@ -165,17 +170,17 @@ void tlb_remove(size_t &frame) {
 void tlb_hit(size_t &frame, size_t &page, size_t &tlb_hits, int result) {
   frame = result;
   tlb_hits++;
+  printf("tlb hit\t");
 }
 
 void tlb_miss(size_t &frame, size_t &page, size_t &tlb_track) {
-  frame =
-      pg_table[page]
-          .frame_num;
+  printf("tlb miss\t");
+  frame = pg_table[page].frame_num;
   tlb_add(pg_table[page]);
-  tlb_track++;
-  if (tlb_track > 15) {
-    tlb_track = 0;
-  }
+  tlb_track = tlb.size();
+  // if (tlb_track > 15) {
+  //   printf("tlb size: %zu", tlb_track);
+  // }
 }
 
 void fifo_replace_page(size_t &frame) {} // TODO
@@ -184,6 +189,7 @@ void lru_replace_page(size_t &frame) {} // TODO
 
 void page_fault(size_t &frame, size_t &page, size_t &frames_used,
                 size_t &pg_faults, size_t &tlb_track, FILE *fbacking) {
+  printf("pg fault\t");
   unsigned char buf[BUFSIZ];
   memset(buf, 0, sizeof(buf));
   bool is_memfull = false;
@@ -195,21 +201,18 @@ void page_fault(size_t &frame, size_t &page, size_t &frames_used,
   // FIFO only
   frame = frames_used % NFRAMES;
   // TODO
-  // if (is_memfull) {
-  //   if (REPLACE_POLICY == FIFO) {  
-  //     fifo_replace_page(frame);
-
-  //   } else {
-
-  //   }
-  // }
+  if (is_memfull) {
+    if (REPLACE_POLICY == FIFO) {
+      fifo_replace_page(frame);
+    } else {
+    }
+  }
   // load page into RAM, update pg_table, TLB
   fseek(fbacking, page * FRAME_SIZE, SEEK_SET);
   fread(buf, FRAME_SIZE, 1, fbacking);
 
   for (int i = 0; i < FRAME_SIZE; i++) {
     *(ram + (frame * FRAME_SIZE) + i) = buf[i];
-
   }
   update_frame_ptable(page, frame);
   tlb_add(pg_table[page]);
@@ -223,29 +226,29 @@ void page_fault(size_t &frame, size_t &page, size_t &frames_used,
 void check_address_value(size_t logic_add, size_t page, size_t offset,
                          size_t physical_add, size_t &prev_frame, size_t frame,
                          int val, int value, size_t o) {
-  
-  printf("log: %5lu 0x%04x (pg:%3lu, off:%3lu)-->phy: %5lu (frm: %3lu) (prv: "
+
+  printf("\nlog: %5lu 0x%04x (pg:%3lu, off:%3lu)-->phy: %5lu (frm: %3lu) (prv: "
          "%3lu)--> val: %4d == value: %4d -- %s",
-         logic_add, (unsigned int)logic_add, page, offset, physical_add, frame, prev_frame,
-         val, value, passed_or_failed(val == value));
+         logic_add, (unsigned int)logic_add, page, offset, physical_add, frame,
+         prev_frame, val, value, passed_or_failed(val == value));
 
   if (frame < prev_frame) {
-    printf("   HIT!\n");
+    printf("   HIT!\t");
   } else {
     prev_frame = frame;
-    printf("----> pg_fault\n");
+    printf("----> pg_fault\t");
   }
-  if (o % 5 == 4) {
-    printf("\n");
-  }
-  // if (o > 20) { exit(-1); }             
-  // // to check out first 20 elements
+  // if (o % 5 == 4) {
+  //   printf("\n");
+  // }
+  if (o > PTABLE_SIZE) { exit(-1); }
+  // to check out first 20 elements
   if (val != value) {
     ++failed_asserts;
   }
-  // if (failed_asserts > 5) {
-  //   exit(-1);
-  // }
+  if (failed_asserts > 5) {
+    exit(-1);
+  }
   // assert(val == value);
 }
 
@@ -257,7 +260,7 @@ void run_simulation() {
   int val = 0;
   char buf[BUFSIZ];
   // physical memory to store the frames
-  bool is_memfull = false; 
+  bool is_memfull = false;
 
   initialize_pg_table_tlb();
 
@@ -265,7 +268,7 @@ void run_simulation() {
   FILE *faddress, *fcorrect, *fbacking;
   open_files(faddress, fcorrect, fbacking);
 
-  for (int o = 0; o < 1000; o++) { 
+  for (int o = 0; o < 1000; o++) {
     // read from file correct.txt
     fscanf(fcorrect, "%s %s %lu %s %s %lu %s %ld", buf, buf, &virt_add, buf,
            buf, &phys_add, buf, &value);
@@ -273,23 +276,23 @@ void run_simulation() {
     get_page_offset(logic_add, page, offset);
 
     int result = check_tlb(page);
-
+    printf("------------ Iteration Number %d ----------\n", o+1);
     if (result >= 0) {
       tlb_hit(frame, page, tlb_hits, result);
     } else if (pg_table[page].is_present) {
       tlb_miss(frame, page, tlb_track);
-    } else { 
+    } else {
       // page fault
       page_fault(frame, page, frames_used, pg_faults, tlb_track, fbacking);
     }
-    
     physical_add = (frame * FRAME_SIZE) + offset;
     val = (int)*(ram + physical_add);
 
     check_address_value(logic_add, page, offset, physical_add, prev_frame,
                         frame, val, value, o);
+    printf("\nframes used: %zu\n", frames_used);
   }
-  close_files(faddress, fcorrect, fbacking); 
+  close_files(faddress, fcorrect, fbacking);
   // and time to wrap things up
   free(ram);
   summarize(pg_faults, tlb_hits);
@@ -298,7 +301,6 @@ void run_simulation() {
 int main(int argc, const char *argv[]) {
   run_simulation();
   // allows asserts to fail silently and be counted
-  printf("\nFailed asserts: %lu\n\n",
-         failed_asserts); 
+  printf("\nFailed asserts: %lu\n\n", failed_asserts);
   return 0;
 }
