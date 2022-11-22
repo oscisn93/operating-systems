@@ -15,8 +15,8 @@
 #define test 11
 
 #define FRAME_SIZE 256
-#define FIFO 0
-#define LRU 1
+#define FIFO 1
+#define LRU 0
 #define REPLACE_POLICY FIFO
 
 // SET TO 128 to use replacement policy: FIFO or LRU,
@@ -55,8 +55,8 @@ size_t get_offset(size_t x) { return 0xff & x; }
 void get_page_offset(size_t x, size_t &page, size_t &offset) {
   page = get_page(x);
   offset = get_offset(x);
-  // printf("x is: %zu, page: %zu, offset: %zu, address: %zu, paddress: %zu\n",
-  //        x, page, offset, (page << 8) | get_offset(x), page * 256 + offset);
+  printf("x is: %zu, page: %zu, offset: %zu, address: %zu, paddress: %zu\n",
+         x, page, offset, (page << 8) | get_offset(x), page * 256 + offset);
 }
 
 void update_frame_ptable(size_t npage, size_t frame_num) {
@@ -155,7 +155,6 @@ void tlb_add(page_node entry) {
   }
   tlb.remove(entry);
   tlb.push_back(entry);
-  printf("\ttlb_size: %zu\t", tlb.size());
 }
 
 // replace page
@@ -170,22 +169,26 @@ void tlb_remove(size_t &frame) {
 void tlb_hit(size_t &frame, size_t &page, size_t &tlb_hits, int result) {
   frame = result;
   tlb_hits++;
-  printf("tlb hit\t");
 }
 
 void tlb_miss(size_t &frame, size_t &page, size_t &tlb_track) {
-  printf("tlb miss\t");
   frame = pg_table[page].frame_num;
   tlb_add(pg_table[page]);
   tlb_track = tlb.size();
-  // if (tlb_track > 15) {
-  //   printf("tlb size: %zu", tlb_track);
-  // }
 }
 
-void fifo_replace_page(size_t &frame) {} // TODO
+void fifo_replace_page(size_t &frame) {
+  size_t pg_num = find_frame_ptable(frame);
+  pg_table[pg_num].is_present = false;
+  pg_table[pg_num].is_used = false;
+}
 
-void lru_replace_page(size_t &frame) {} // TODO
+void lru_replace_page(size_t &frame) {
+  size_t pg_num = get_used_ptable();
+  frame = pg_table[pg_num].frame_num;
+  pg_table[pg_num].is_present =false;
+  pg_table[pg_num].is_used = false;
+}
 
 void page_fault(size_t &frame, size_t &page, size_t &frames_used,
                 size_t &pg_faults, size_t &tlb_track, FILE *fbacking) {
@@ -205,6 +208,7 @@ void page_fault(size_t &frame, size_t &page, size_t &frames_used,
     if (REPLACE_POLICY == FIFO) {
       fifo_replace_page(frame);
     } else {
+      lru_replace_page(frame);
     }
   }
   // load page into RAM, update pg_table, TLB
@@ -238,18 +242,13 @@ void check_address_value(size_t logic_add, size_t page, size_t offset,
     prev_frame = frame;
     printf("----> pg_fault\t");
   }
-  // if (o % 5 == 4) {
-  //   printf("\n");
-  // }
-  if (o > PTABLE_SIZE) { exit(-1); }
-  // to check out first 20 elements
   if (val != value) {
     ++failed_asserts;
   }
   if (failed_asserts > 5) {
     exit(-1);
   }
-  // assert(val == value);
+  assert(val == value);
 }
 
 void run_simulation() {
@@ -276,7 +275,7 @@ void run_simulation() {
     get_page_offset(logic_add, page, offset);
 
     int result = check_tlb(page);
-    printf("------------ Iteration Number %d ----------\n", o+1);
+    printf("------------ Iteration Number %d ----------\tpage:%zu\n", (o + 1), page);
     if (result >= 0) {
       tlb_hit(frame, page, tlb_hits, result);
     } else if (pg_table[page].is_present) {
