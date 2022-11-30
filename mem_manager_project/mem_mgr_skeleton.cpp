@@ -2,18 +2,11 @@
 //
 #include <assert.h>
 #include <cassert>
-<<<<<<< HEAD
-=======
 #include <list>
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-<<<<<<< HEAD
-#include <list>
-=======
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
 
 #pragma warning(disable : 4996)
 
@@ -22,13 +15,8 @@
 #define test 11
 
 #define FRAME_SIZE 256
-<<<<<<< HEAD
-#define FIFO 0
-#define LRU 1
-=======
 #define FIFO 1
 #define LRU 0
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
 #define REPLACE_POLICY FIFO
 
 // SET TO 128 to use replacement policy: FIFO or LRU,
@@ -36,29 +24,14 @@
 #define PTABLE_SIZE 256
 #define TLB_SIZE 16
 
-<<<<<<< HEAD
-struct page_node {
-=======
 // an object that represents a page node
 // with overloaded equality / inequality operators
 struct page_node {
   // index in pg_table
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
   size_t npage;
   size_t frame_num;
   bool is_present;
   bool is_used;
-<<<<<<< HEAD
-};
-
-char *ram = (char *)malloc(NFRAMES * FRAME_SIZE);
-page_node pg_table[PTABLE_SIZE]; // page table and (single) TLB
-page_node tlb[TLB_SIZE];
-
-// std::list<page_node> lru_list;
-// erase_if, push_back, pop_front
-
-=======
   // strict equality of all page node atttributes
   bool operator==(const page_node &other) {
     return npage == other.npage && frame_num == other.frame_num &&
@@ -71,7 +44,6 @@ char *ram = (char *)malloc(NFRAMES * FRAME_SIZE);
 page_node pg_table[PTABLE_SIZE];
 std::list<page_node> tlb;
 
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
 const char *passed_or_failed(bool condition) {
   return condition ? " + " : "fail";
 }
@@ -83,13 +55,8 @@ size_t get_offset(size_t x) { return 0xff & x; }
 void get_page_offset(size_t x, size_t &page, size_t &offset) {
   page = get_page(x);
   offset = get_offset(x);
-<<<<<<< HEAD
-  // printf("x is: %zu, page: %zu, offset: %zu, address: %zu, paddress: %zu\n",
-  //        x, page, offset, (page << 8) | get_offset(x), page * 256 + offset);
-=======
   printf("x is: %zu, page: %zu, offset: %zu, address: %zu, paddress: %zu\n", x,
          page, offset, (page << 8) | get_offset(x), page * 256 + offset);
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
 }
 
 void update_frame_ptable(size_t npage, size_t frame_num) {
@@ -114,12 +81,7 @@ size_t get_used_ptable() { // LRU
       return (size_t)i;
     }
   }
-<<<<<<< HEAD
-  // All present pages have been used recently, set all page entry used flags to
-  // false
-=======
   // set all page entry used flags to false
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
   for (size_t i = 0; i < PTABLE_SIZE; i++) {
     pg_table[i].is_used = false;
   }
@@ -133,15 +95,9 @@ size_t get_used_ptable() { // LRU
 }
 
 int check_tlb(size_t page) {
-<<<<<<< HEAD
-  for (int i = 0; i < TLB_SIZE; i++) {
-    if (tlb[i].npage == page) {
-      return i;
-=======
   for (page_node i : tlb) {
     if (i.npage == page) {
       return i.frame_num;
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
     }
   }
   return -1;
@@ -178,17 +134,10 @@ void initialize_pg_table_tlb() {
     pg_table[i].is_present = false;
     pg_table[i].is_used = false;
   }
-<<<<<<< HEAD
-  for (int i = 0; i < TLB_SIZE; i++) {
-    tlb[i].npage = (size_t)-1;
-    tlb[i].is_present = false;
-    pg_table[i].is_used = false;
-=======
   for (page_node i : tlb) {
     i.npage = (size_t)-1;
     i.is_present = false;
     i.is_used = false;
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
   }
 }
 
@@ -199,31 +148,6 @@ void summarize(size_t pg_faults, size_t tlb_hits) {
   printf("\n\t\t...done.\n");
 }
 
-<<<<<<< HEAD
-void tlb_add(int index, page_node entry) {
-    // page_node* tlb_index = &tlb[index];
-    // tlb_index -> frame_num = entry.frame_num;
-    // tlb_index -> npage = entry.npage;
-    // tlb_index -> is_present = entry.is_present;
-    // tlb_index -> is_used = entry.is_used;
-} // TODO
-
-void tlb_remove(int index) {} // TODO
-
-void tlb_hit(size_t &frame, size_t &page, size_t &tlb_hits, int result) {
-} // TODO
-
-void tlb_miss(size_t &frame, size_t &page, size_t &tlb_track) {
-    frame = pg_table[page].frame_num;
-} // TODO
-
-void fifo_replace_page(size_t &frame) {} // TODO
-
-void lru_replace_page(size_t &frame) {} // TODO
-
-void page_fault(size_t &frame, size_t &page, size_t &frames_used,
-                size_t &pg_faults, size_t &tlb_track, FILE *fbacking) {
-=======
 // adding new entries to tlb
 void tlb_add(page_node entry) {
   if (tlb.size() >= TLB_SIZE && tlb.front() != entry) {
@@ -269,7 +193,6 @@ void lru_replace_page(size_t &frame) {
 void page_fault(size_t &frame, size_t &page, size_t &frames_used,
                 size_t &pg_faults, size_t &tlb_track, FILE *fbacking) {
   printf("pg fault\t");
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
   unsigned char buf[BUFSIZ];
   memset(buf, 0, sizeof(buf));
   bool is_memfull = false;
@@ -278,15 +201,6 @@ void page_fault(size_t &frame, size_t &page, size_t &frames_used,
   if (frames_used >= NFRAMES) {
     is_memfull = true;
   }
-<<<<<<< HEAD
-  frame = frames_used % NFRAMES; // FIFO only
-
-  if (is_memfull) {
-    // if (REPLACE_POLICY == FIFO) {  // TODO
-    // } else {
-    //     // TODO
-    // }
-=======
   // FIFO only
   frame = frames_used % NFRAMES;
   // TODO
@@ -296,7 +210,6 @@ void page_fault(size_t &frame, size_t &page, size_t &frames_used,
     } else {
       lru_replace_page(frame);
     }
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
   }
   // load page into RAM, update pg_table, TLB
   fseek(fbacking, page * FRAME_SIZE, SEEK_SET);
@@ -306,83 +219,6 @@ void page_fault(size_t &frame, size_t &page, size_t &frames_used,
     *(ram + (frame * FRAME_SIZE) + i) = buf[i];
   }
   update_frame_ptable(page, frame);
-<<<<<<< HEAD
-  tlb_add(tlb_track++, pg_table[page]);
-  if (tlb_track > 15) {
-    tlb_track = 0;
-  }
-
-  ++frames_used;
-}
-
-void check_address_value(size_t logic_add, size_t page, size_t offset,
-                         size_t physical_add, size_t &prev_frame, size_t frame,
-                         int val, int value, size_t o) {
-  printf("log: %5lu 0x%04x (pg:%3lu, off:%3lu)-->phy: %5lu (frm: %3lu) (prv: "
-         "%3lu)--> val: %4d == value: %4d -- %s",
-         logic_add, logic_add, page, offset, physical_add, frame, prev_frame,
-         val, value, passed_or_failed(val == value));
-
-  if (frame < prev_frame) {
-    printf("   HIT!\n");
-  } else {
-    prev_frame = frame;
-    printf("----> pg_fault\n");
-  }
-  if (o % 5 == 4) {
-    printf("\n");
-  }
-  // if (o > 20) { exit(-1); }             // to check out first 20 elements
-
-  if (val != value) {
-    ++failed_asserts;
-  }
-  if (failed_asserts > 5) {
-    exit(-1);
-  }
-  //     assert(val == value);
-}
-
-void run_simulation() {
-  // addresses, pages, frames, values, hits and faults
-  size_t logic_add, virt_add, phys_add, physical_add;
-  size_t page, frame, offset, value, prev_frame = 0, tlb_track = 0;
-  size_t frames_used = 0, pg_faults = 0, tlb_hits = 0;
-  int val = 0;
-  char buf[BUFSIZ];
-
-  bool is_memfull = false; // physical memory to store the frames
-
-  initialize_pg_table_tlb();
-
-  // addresses to test, correct values, and pages to load
-  FILE *faddress, *fcorrect, *fbacking;
-  open_files(faddress, fcorrect, fbacking);
-
-  for (int o = 0; o < 1000; o++) { // read from file correct.txt
-    fscanf(fcorrect, "%s %s %lu %s %s %lu %s %ld", buf, buf, &virt_add, buf,
-           buf, &phys_add, buf, &value);
-
-    fscanf(faddress, "%ld", &logic_add);
-    get_page_offset(logic_add, page, offset);
-
-    int result = check_tlb(page);
-    if (result >= 0) {
-      tlb_hit(frame, page, tlb_hits, result);
-    } else if (pg_table[page].is_present) {
-      tlb_miss(frame, page, tlb_track);
-    } else { // page fault
-      page_fault(frame, page, frames_used, pg_faults, tlb_track, fbacking);
-    }
-
-    physical_add = (frame * FRAME_SIZE) + offset;
-    val = (int)*(ram + physical_add);
-
-    check_address_value(logic_add, page, offset, physical_add, prev_frame,
-                        frame, val, value, o);
-  }
-  close_files(faddress, fcorrect, fbacking); // and time to wrap things up
-=======
   tlb_add(pg_table[page]);
   tlb_track++;
   if (tlb_track > 15) {
@@ -458,19 +294,13 @@ void run_simulation() {
   }
   close_files(faddress, fcorrect, fbacking);
   // and time to wrap things up
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
   free(ram);
   summarize(pg_faults, tlb_hits);
 }
 
 int main(int argc, const char *argv[]) {
   run_simulation();
-<<<<<<< HEAD
-  // printf("\nFailed asserts: %lu\n\n", failed_asserts);   // allows asserts to
-  // fail silently and be counted
-=======
   // allows asserts to fail silently and be counted
   printf("\nFailed asserts: %lu\n\n", failed_asserts);
->>>>>>> bcde94ab12a50385fabb3a0e3591d0bd6386d0e0
   return 0;
 }
